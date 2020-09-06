@@ -1,11 +1,10 @@
+require "pry"
 class Task
   attr_accessor :id, :name, :the_details
-  @id = 0
-  @name = nil
-  @the_details = nil
+  @@count = 0
   
   def initialize(params)
-    @id = params[:id]
+    @id = @@count += 1
     @name = params[:name]
     @the_details = params[:the_details]
   end
@@ -27,7 +26,7 @@ class To_do
     puts "***********"
     puts "<タスク一覧>"
     @tasks.each do |task|
-      puts "ID:#{task.id}""  ""タスク名:#{task.name}""  ""詳細:#{task.the_details}"
+      puts "ID: #{task.id} タスク名: #{task.name} 詳細: #{task.the_details}"
     end
     puts "***********"
   end
@@ -47,11 +46,11 @@ class To_do
 
 end
 
-task1 = Task.new(id:1, name: "起きる", the_details: "7時30分")
-task2 = Task.new(id:2, name: "朝ごはんを食べる", the_details: "8時")
-task3 = Task.new(id:3, name: "身支度をする", the_details: "９時")
-task4 = Task.new(id:4, name: "出勤する", the_details: "9時30分")
-task5 = Task.new(id:5, name: "会社に到着", the_details: "10時")
+task1 = Task.new(name: "起きる", the_details: "7時30分")
+task2 = Task.new(name: "朝ごはんを食べる", the_details: "8時")
+task3 = Task.new(name: "身支度をする", the_details: "９時")
+task4 = Task.new(name: "出勤する", the_details: "9時30分")
+task5 = Task.new(name: "会社に到着", the_details: "10時")
 to_do = To_do.new
 to_do.add(task1)
 to_do.add(task2)
